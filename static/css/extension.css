@@ -1,0 +1,148 @@
+/* 整合营销推广 */
+.extension-app {
+  flex-direction: column;
+}
+
+.exttop {
+  margin-top: 42px;
+}
+
+.ext-webdestile {
+
+  width: 572px;
+  align-self: start;
+}
+
+.ext-webdestile .title {
+  text-align: center;
+  color: #f7475e;
+}
+
+.ext-webdestile .desc {
+  margin-top: 39px;
+  color: #646464;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.exbj {
+  background-image: url(~static/bgimg.png);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position-x: 88%;
+}
+
+/* 搜索引擎优化 */
+.yinq {
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #f8f8f8;
+}
+
+.yinq-left {
+  width: 509px;
+  margin-right: 120px;
+}
+
+.yinq-right .icon {
+  width: 47px;
+}
+
+.yinq-right .webdestill {
+  margin: 10px 47px;
+}
+
+.yinq-right .webdestill .title {
+  color: #323232;
+  font-size: 27px;
+  text-align: center;
+}
+
+.yinq-right .webdestill .desc {
+  font-size: 20px;
+  color: #646464;
+  line-height: 40px;
+  margin-top: 54px;
+  text-align: justify;
+}
+
+/* 新媒体账号主体运维 */
+.xmtzh .O-title {
+  color: #f7475e;
+  font-weight: bold;
+  margin-bottom: 51px;
+}
+
+.xmtzh .O-title-en {
+  width: 90%;
+  text-align: center;
+  font-size: 20px;
+  color: #646464;
+  line-height: 40px;
+  margin-top: 0;
+}
+
+.xmtzh>img {
+  width: 100%;
+  margin-top: 41px;
+}
+
+/* 推广内容策划制作宣推 */
+.tuig {
+  background: #f8f8f8;
+}
+
+.tuig .O-title {
+  font-size: 27px;
+  color: #323232;
+}
+
+.tuig-list {
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.tuig-list img {
+  width: calc(100% / 4 - 18px);
+  margin-bottom: 32px;
+  border-radius: 16px;
+}
+
+/* 粉丝互动活动策划 */
+.fshd {
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.fshd .ext-webdestile {
+  width: 451px;
+  align-self: auto;
+  flex-shrink: 0;
+}
+
+.fshd .ext-webdestile .desc {
+  text-align: center;
+}
+
+.fs-right {
+  width: 622px;
+}
+
+/*  */
+.hdsjf {
+  background: #f8f8f8;
+}
+
+.hdsjf .fs-right {
+  width: 643px;
+}
+
+.hdsjf .ext-webdestile .O-title {
+  color: #323232;
+}
+
+.hdsjf .ext-webdestile .O-txt {
+  text-align: justify;
+}

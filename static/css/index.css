@@ -1,0 +1,194 @@
+/* 公司介绍 */
+.index-app {
+  padding: 78px;
+}
+
+.Company {
+  text-align: center;
+}
+
+.more {
+  position: absolute;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 15px 40px;
+  color: #ffffff;
+  background: #000;
+  right: 60px;
+  bottom: -25px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.Company>.pexels {
+  width: 583px;
+  flex-shrink: 0;
+}
+
+.Company>.left {
+  width: 626px;
+  padding: 34px 60px 61px 66px;
+  border: 1px solid #000000;
+  position: relative;
+  border-right: none;
+}
+
+.Company>.left>.O-txt {
+  margin-top: 21px;
+  text-align: justify;
+  line-height: 28px;
+}
+
+/* 主营业务 */
+.zyban {
+  background: #444869 url(~static/indexbg2.png) no-repeat center/cover;
+}
+
+.business {
+  display: flex;
+  flex-direction: column;
+}
+
+.business .O-title {
+  position: relative;
+  color: #ffffff;
+  width: 100%;
+}
+
+.business .O-title::after,
+.business .O-title::before {
+  position: absolute;
+  content: "";
+  background: #fff;
+  height: 1px;
+  width: 40%;
+  left: 0;
+  top: 50%;
+}
+
+.business .O-title::after {
+  right: 0;
+  left: unset;
+}
+
+.bus-icon {
+  margin-top: 62px;
+  width: 100%;
+  color: #c8cadb;
+  justify-content: space-between;
+  font-size: 30px;
+  text-align: center;
+}
+
+.bus-icon>.icon-item>img {
+  width: 146px;
+  height: 146px;
+}
+
+.bus-icon>.icon-item {
+  width: 25%;
+}
+
+.bus-icon>.icon-item>p {
+  margin-top: 40px;
+}
+
+/* 我们的优势 */
+.advantage {
+  background: #f5f5f5;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+
+.adv-list {
+  align-items: unset;
+  flex-wrap: wrap;
+  margin-top: 68px;
+  justify-content: space-between;
+}
+
+.adv-item {
+  width: calc(50% - 45px / 2);
+  margin-bottom: 46px;
+  background: #ffffff;
+  border: 1px solid #d2d2d2;
+  padding: 26px 43px;
+}
+
+.adv-item .adv-key {
+  font-size: 67px;
+  margin-right: 45px;
+  font-weight: bold;
+}
+
+.adv-item .adv-dsec {
+  flex-direction: column;
+  text-align: justify;
+  align-items: flex-start;
+  line-height: 27px;
+}
+
+.adv-item .adv-dsec .title {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+/* 案例展示 */
+.typical {
+  background: #fff;
+}
+
+.typical .O-title {
+  color: #323232;
+}
+
+.typical .O-title::before,
+.typical .O-title::after {
+  background: #323232;
+}
+
+.typi-list {
+  margin-top: 80px;
+  flex-direction: column;
+}
+
+.typi-pic {
+  justify-content: space-between;
+}
+
+.typi-pic>div {
+  width: calc(100% / 3 - 28px);
+}
+
+.typi-pic>div>img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.typ-txt {
+  margin-top: 33px;
+  font-size: 27px;
+  color: #646464;
+}
+
+.typical .more {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  margin-top: 72px;
+  margin-bottom: 10px;
+}
+
+
+.casetitle-en {
+  font-size: 34px;
+  font-weight: bold;
+  color: #E1E1E1;
+}
+
+.casetitle {
+  color: #323232;
+  font-size: 34px;
+  font-weight: 500;
+  margin-top: 16px;
+}
