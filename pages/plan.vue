@@ -83,25 +83,47 @@
     />
     <!-- 专题活动页面策划、设计、制作 -->
     <div class="special plan-app padd-or padd flex-center">
-      <p class="O-title">专题活动页面策划、设计、制作</p>
+      <p class="O-title" v-text="info[0] && info[0].listlabel"></p>
       <p class="O-title-en">配合相关活动</p>
       <img src="~static/sjx.png" alt="配合相关活动" class="special-icon" />
       <div class="special-list flex-center">
-        <div class="item first flex-center">
-          <img src="~static/imgtest.png" alt="" />
-          <img src="~static/imgtest.png" alt="" />
-          <img src="~static/imgtest.png" alt="" />
+        <div
+          class="item flex-center"
+          v-for="(item, index) in info"
+          :key="index"
+          :class="index == 0 && 'first'"
+        >
+          <template v-for="(pic, indef) in item.picurl">
+            <img v-lazy="pic" :key="indef" />
+          </template>
         </div>
-        <div class="item flex-center">
+        <!-- <div class="item flex-center">
           <img src="~static/imgtest.png" alt="" />
           <img src="~static/imgtest.png" alt="" />
           <img src="~static/imgtest.png" alt="" />
           <img src="~static/imgtest.png" alt="" />
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return { info: {} };
+  },
+  async created() {
+    let {
+      data: { info },
+    } = await this.$api.selPic({ data: { themeid: 1400 } });
+    this.info = info.map((el) => {
+      el.picurl = el.picurl.split(",");
+      return el;
+    });
+  },
+};
+</script>
+
 <style>
 /* 平台策划建设运维 */
 .plan-app {
@@ -228,13 +250,14 @@
   flex-direction: column;
 }
 .special-list .item {
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 25px;
 }
 
 .special-list .item > img {
   border-radius: 16px;
   width: calc(100% / 4 - 52px / 3);
+  margin-bottom: 25px;
 }
 .special-list .item.first > img {
   width: calc(100% / 3 - 52px / 3);

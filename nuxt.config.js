@@ -51,7 +51,13 @@ export default {
   css: ['~assets/main.css','~assets/reset.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~/plugins/api',
+    {
+      src: '@/plugins/vue-lazyload',
+      ssr: false
+    }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -61,8 +67,15 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
   ],
-
+  // 需要代理，可以打开底下的注释
+  // axios: {
+  //   proxy: true
+  // },
+  // proxy: {
+  //   '/api/': 'https://www.jianshu.com'
+  // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }

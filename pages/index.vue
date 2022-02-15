@@ -55,19 +55,15 @@
     <div class="padd-or index-app flex-center Company business typical">
       <p class="O-title">案例展示</p>
       <p class="O-title-en">TYPICAL CASE</p>
-      <div class="typi-list flex-center" v-for="(item, index) in 6">
+      <div
+        class="typi-list flex-center"
+        v-for="(item, index) in info"
+        :key="index"
+      >
         <div class="typi-pic flex-center">
-          <div>
-            <img src="~static/imgtest.png" />
-            <p class="typ-txt">&nbsp;</p>
-          </div>
-          <div>
-            <img src="~static/imgtest.png" />
-            <p class="typ-txt">文化旅游展会</p>
-          </div>
-          <div>
-            <img src="~static/imgtest.png" />
-            <p class="typ-txt">&nbsp;</p>
+          <div v-for="(pic, key) in item.picurl" :key="key">
+            <img v-lazy="pic" />
+            <p class="typ-txt">{{ key == 1 ? item.listlabel : "&nbsp;" }}</p>
           </div>
         </div>
       </div>
@@ -79,15 +75,24 @@
 <script>
 import { mapState } from "vuex";
 export default {
+  data() {
+    return { info: {} };
+  },
   computed: mapState("storage", ["advantage"]),
-  mounted() {},
-  async asyncData() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        return resolve({ user: 111 });
-      }, 1000);
+  async created() {
+    let {
+      data: { info },
+    } = await this.$api.selPic();
+    this.info = info.map((el) => {
+      el.picurl = el.picurl.split(",");
+      return el;
     });
   },
+  // async asyncData(context) {
+  //   const RSA_DATA = await context.app.api.selInfo();
+  //   console.log(RSA_DATA);
+  //   return RSA_DATA;
+  // },
   methods: {},
 };
 </script>

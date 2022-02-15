@@ -46,7 +46,9 @@
     </div>
     <!-- 推广内容策划制作宣推 -->
     <div class="tuig xmtzh extension-app padd-or padd flex-center">
-      <p class="O-title">推广内容策划制作宣推</p>
+      <p class="O-title" v-if="extension.tg[0]">
+        {{ extension.tg[0].listlabel }}
+      </p>
       <p class="O-title-en">
         拍摄、编辑、剪辑、排版、推送，提供一站式网络营销服务!
       </p>
@@ -54,8 +56,14 @@
         专业内容团队帮企业操作全套专业营销服务，从创意策划广告内容设计到日常维护到降低成本，提高效果，
         包括进行内容策划、运营策划、宣传推广、红人转发、品牌监测等。
       </p>
-      <div class="tuig-list flex-center">
-        <img src="~static/imgtest.png" v-for="item in 8" />
+      <div
+        class="tuig-list flex-center"
+        v-for="item in extension.ys"
+        :key="item.id"
+      >
+        <template v-for="(pic, keys) in item.picurl">
+          <img v-lazy="pic" :key="keys" />
+        </template>
       </div>
     </div>
     <!-- 粉丝互动活动策划 -->
@@ -72,13 +80,21 @@
     </div>
     <!-- 印刷品策划、设计、印刷、制作、物流派送 -->
     <div class="tuig xmtzh extension-app padd-or padd flex-center">
-      <p class="O-title">印刷品策划、设计、印刷、制作、物流派送</p>
+      <p class="O-title" v-if="extension.ys[0]">
+        {{ extension.ys[0].listlabel }}
+      </p>
       <p class="O-title-en">纸质宣传品能够帮助企业或个人迅速传递信息。</p>
       <p class="O-title-en">
         由多年从事媒介软文发布的专业团队，精心为您的推广提供策划方案；并提供设计、印刷、制作、物流派送等一站式服务。
       </p>
-      <div class="tuig-list flex-center">
-        <img src="~static/imgtest.png" v-for="item in 8" />
+      <div
+        class="tuig-list flex-center"
+        v-for="item in extension.ys"
+        :key="item.id"
+      >
+        <template v-for="(pic, keys) in item.picurl">
+          <img v-lazy="pic" :key="keys" />
+        </template>
       </div>
     </div>
     <!-- 其他配套宣传品策划、设计、制作 -->
@@ -86,9 +102,17 @@
       class="tuig xmtzh extension-app padd-or padd flex-center"
       style="background: #fff"
     >
-      <p class="O-title">其他配套宣传品策划、设计、制作</p>
-      <div class="tuig-list flex-center">
-        <img src="~static/imgtest.png" v-for="item in 4" />
+      <p class="O-title" v-if="extension.qt[0]">
+        {{ extension.qt[0].listlabel }}
+      </p>
+      <div
+        class="tuig-list flex-center"
+        v-for="item in extension.qt"
+        :key="item.id"
+      >
+        <template v-for="(pic, keys) in item.picurl">
+          <img v-lazy="pic" :key="keys" />
+        </template>
       </div>
     </div>
     <!-- 活动数据跟踪和分析 -->
@@ -105,6 +129,28 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return { extension: { qt: [], ys: [], tg: [] } };
+  },
+  async created() {
+    let {
+      data: { info },
+    } = await this.$api.selPic({ data: { themeid: 1401 } });
+    let result = info.map((el) => {
+      el.picurl = el.picurl.split(",");
+      return el;
+    });
+    // 数组分割
+    this.extension = {
+      qt: result.filter((el) => [231].includes(+el.id)), //其他配套宣传品策划、设计、制作
+      ys: result.filter((el) => [231, 230].includes(+el.id)), //印刷品策划、设计、印刷、制作、物流派送
+      tg: result.filter((el) => [228, 229].includes(+el.id)), //推广内容策划制作宣推
+    };
+  },
+};
+</script>
 <style>
 @import url(~static/css/extension);
 </style>

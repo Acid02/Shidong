@@ -24,13 +24,19 @@
     </div>
     <!-- 展台设计搭建 -->
     <div class="zt tuig xmtzh extension-app padd-or padd flex-center">
-      <p class="O-title">展台设计搭建</p>
+      <p class="O-title" v-text="info[0] && info[0].listlabel">展台设计搭建</p>
       <p class="O-title-en">
         提供专业的展台设计搭建服务，特装展台设计制作、搭建制作、展台设计搭建、
         展台搭建装修、大型会议活动现场布置等，为您创造完美的品牌营销。
       </p>
-      <div class="tuig-list flex-center">
-        <img src="~static/imgtest.png" v-for="item in 4" />
+      <div
+        class="tuig-list flex-center"
+        v-for="(item, index) in info"
+        :key="index"
+      >
+        <template v-for="(pic, indef) in item.picurl">
+          <img v-lazy="pic" :key="indef" />
+        </template>
       </div>
     </div>
     <!-- 我们的服务 -->
@@ -68,6 +74,22 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return { info: {} };
+  },
+  async created() {
+    let {
+      data: { info },
+    } = await this.$api.selPic({ data: { themeid: 1402 } });
+    this.info = info.map((el) => {
+      el.picurl = el.picurl.split(",");
+      return el;
+    });
+  },
+};
+</script>
 <style>
 @import url(~static/css/extension);
 /* <!-- 线下活动支持 --> */
