@@ -11,7 +11,7 @@
       >
         <div class="typi-pic flex-center">
           <div v-for="(pic, indef) in item.picurl" :key="indef">
-            <img v-lazy="pic" />
+            <img v-lazy="pic" :large="pic" :preview="0" preview-text="" />
             <p class="typ-txt">{{ item.listlabel }}</p>
           </div>
           <!-- <div>
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="paging flex-center">
+    <div class="paging flex-center feny">
       <div class="front" @click="cut('starts')" :class="page == 1 && 'invalid'">
         <
       </div>
@@ -56,8 +56,11 @@ export default {
       pagesize: 3,
     };
   },
-  async created() {
+  async mounted() {
     this.isLoad();
+    this.$nextTick(() => {
+      this.$previewRefresh();
+    });
   },
   methods: {
     // 分页
@@ -103,11 +106,12 @@ export default {
 .paging > .front,
 .paging > .after,
 .paging > .number-list > div {
-  font-size: 27px;
-  padding: 14px 26px;
+  font-size: 18px;
+  padding: 7px 13px;
   border: 1px solid #323232;
   border-radius: 8px;
   background: #ffffff;
+  cursor: pointer;
 }
 .number-list {
   margin-right: 8px;
@@ -122,5 +126,8 @@ export default {
 .paging .invalid {
   color: #c2c2c2;
   border-color: #c2c2c2;
+}
+.feny {
+  margin-top: 20px;
 }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <!-- 平台策划建设运维 -->
     <div class="plan-app padd-or padd flex-center plbj">
-      <p class="plan-title">平台策划建设运维</p>
+      <p class="plan-title FontWeight">平台策划建设运维</p>
       <img
         src="~static/duobx.png"
         class="plan-icon"
@@ -12,7 +12,7 @@
       <div class="plan-webdesc flex-center">
         <div class="webleft">
           <img src="~static/yqbd.png" class="icon" alt="shidong" />
-          <p class="title">
+          <p class="title FontWeight">
             电脑站 移动站 微官网 小程序 H5 公众号等 整体策划搭建
           </p>
           <p class="desc">
@@ -71,12 +71,13 @@
     <!-- 相关资料整理、编辑、录入 -->
     <div class="upd plan-app padd-or padd flex-center">
       <p class="O-title">相关资料整理、编辑、录入</p>
-      <img src="~/static/upd.png" />
+      <img src="~/static/upd.jpg" />
     </div>
     <!-- 多语种服务 -->
-    <img src="~/static/dyz.png" width="100%" />
+    <img src="~/static/dyz.png" width="100%" class="dyz" />
     <!-- 平常日运维 -->
     <img
+      class="yunw"
       src="~/static/pcyw.png"
       width="70%"
       style="display: block; margin: 0 auto"
@@ -94,7 +95,7 @@
           :class="index == 0 && 'first'"
         >
           <template v-for="(pic, indef) in item.picurl">
-            <img v-lazy="pic" :key="indef" />
+            <img v-lazy="pic" :large="pic" :preview="0" :key="indef" />
           </template>
         </div>
         <!-- <div class="item flex-center">
@@ -108,17 +109,22 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return { info: {} };
   },
-  async created() {
+  computed: mapState("storage", ["cWidth"]),
+  async mounted() {
     let {
       data: { info },
     } = await this.$api.selPic({ data: { themeid: 1400 } });
     this.info = info.map((el) => {
       el.picurl = el.picurl.split(",");
       return el;
+    });
+    this.$nextTick(() => {
+      this.$previewRefresh();
     });
   },
 };
@@ -200,7 +206,7 @@ export default {
   flex-shrink: 0;
 }
 .Software .sof-list .sof-item .sof-icon img {
-  width: 65px;
+  height: 45px;
 }
 .sof-text {
   padding: 36px 24px;
@@ -233,7 +239,7 @@ export default {
 }
 .special .O-title {
   font-size: 27px;
-  font-weight: bold;
+  font-weight: 500;
   color: #323232;
 }
 .special .O-title-en {
@@ -250,16 +256,117 @@ export default {
   flex-direction: column;
 }
 .special-list .item {
+  width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .special-list .item > img {
   border-radius: 16px;
-  width: calc(100% / 4 - 52px / 3);
-  margin-bottom: 25px;
+  width: calc(100% / 4 - 112px / 3);
+  margin-bottom: 55px;
+  border: 1px solid #bfbfbf;
 }
 .special-list .item.first > img {
-  width: calc(100% / 3 - 52px / 3);
+  width: calc(100% / 3 - 112px / 3);
+}
+
+@media screen and (max-width: 768px) {
+  .padd {
+    padding: 20px;
+  }
+  .plan-title {
+    font-size: 23px;
+  }
+  .webleft .icon {
+    display: none;
+  }
+  .plbj {
+    background-image: linear-gradient(#fff, #fff);
+  }
+  .plan-icon {
+    width: 20px;
+    margin-top: 9px;
+  }
+  .upd img,
+  .webleft {
+    width: 100%;
+    margin-right: 0;
+  }
+  .plan-webdesc {
+    margin-top: 0;
+  }
+  .webleft .title {
+    margin: 10px auto;
+    font-size: 21px;
+    line-height: 26px;
+  }
+  .webleft .desc {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .Software .O-title-en {
+    margin-top: 14px;
+  }
+  .Software .sof-list {
+    margin-top: 30px;
+    width: 100%;
+  }
+  .Software .sof-list .sof-item {
+    width: 100%;
+    height: 111px;
+  }
+  .Software .sof-list .sof-item .sof-icon {
+    height: 100%;
+  }
+  .Software .sof-list .sof-item .sof-icon img {
+    height: 25px;
+  }
+  .sof-text {
+    padding: 15px 10px;
+    width: calc(100% - 102px);
+  }
+  .sof-text .title {
+    font-size: 23px;
+    margin-bottom: 8px;
+  }
+  .sof-text .desc {
+    font-size: 18px;
+    width: auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: unset;
+    -webkit-line-clamp: 2;
+    line-height: 1.5;
+    overflow: hidden;
+  }
+  .special .O-title {
+    font-size: 21px;
+  }
+  .special .O-title-en {
+    margin-top: 17px;
+    margin-bottom: 6px;
+    font-size: 19px;
+  }
+  .special-icon {
+    width: 74px;
+    margin-bottom: 24px;
+  }
+  .special-list .item.first > img {
+    width: calc(100% / 3 - 20px / 3);
+  }
+  .special-list .item > img {
+    margin-bottom: 14px;
+  }
+  .special-list .item > img {
+    border-radius: 5px;
+    width: calc(100% / 4 - 20px / 3);
+  }
+  .dyz {
+    /* width: 120%; */
+  }
+  .yunw {
+    width: 100%;
+  }
 }
 </style>

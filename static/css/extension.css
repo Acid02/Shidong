@@ -108,6 +108,7 @@
   width: calc(100% / 4 - 18px);
   margin-bottom: 32px;
   border-radius: 16px;
+  border: 1px solid #BFBFBF;
 }
 
 /* 粉丝互动活动策划 */
@@ -132,7 +133,7 @@
 
 /*  */
 .hdsjf {
-  background: #f8f8f8;
+  /* background: #f8f8f8; */
 }
 
 .hdsjf .fs-right {
@@ -145,4 +146,81 @@
 
 .hdsjf .ext-webdestile .O-txt {
   text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+
+  .yinq,
+  .fshd {
+    flex-direction: column;
+  }
+
+  .yinq-left,
+  .hdsjf .fs-right,
+  .ext-webdestile,
+  .fs-right {
+    order: 1;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .fshd .ext-webdestile {
+    order: 0;
+    width: 100%;
+  }
+
+  .exbj {
+    background-image: linear-gradient(#fff, #fff);
+  }
+
+  .exttop {
+    margin-top: 17px;
+  }
+
+  .ext-webdestile .desc,
+  .yinq-right .webdestill .desc,
+  .xmtzh .O-title-en {
+    width: 100%;
+    margin-top: 16px;
+    font-size: 18px;
+    line-height: 36px;
+  }
+
+  .xxhd .ext-webdestile {
+    width: 100%;
+  }
+
+  .xmtzh .O-title {
+    margin-bottom: 0;
+  }
+
+  .yinq-right .icon {
+    display: none;
+  }
+
+  .yinq-right .webdestill {
+    margin: 0;
+  }
+
+  .xmtzh>img {
+    margin-top: 20px;
+  }
+
+  .tuig-list {
+    margin-top: 10px;
+  }
+
+  .tuig-list img {
+    margin-bottom: 0;
+    width: calc(100% / 4 - 8px);
+    border-radius: 5px;
+  }
+
+  .xmtzh .O-title {
+    font-size: 26px;
+  }
+
+  .ysPic {
+    margin-bottom: 10px !important;
+  }
 }

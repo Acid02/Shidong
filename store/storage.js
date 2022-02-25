@@ -36,5 +36,12 @@ export const state = () => ({
             desc:'多语种服务目前涉及服务语种有中文简体、英语、日语、韩语、法语、德语、西班牙语、中文繁体、俄语、意大利语、马来语、印尼语、泰语、阿拉伯语。',
             color:'#65B3D5'
         }
-    ]
+    ],
+    cWidth:0
 })
+
+export const mutations = {
+    setWindow(state) {
+      state.cWidth = document?.body?.clientWidth;
+    }
+  }

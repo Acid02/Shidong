@@ -71,7 +71,6 @@ var {
 }
 
 body {
-  font-family: '宋体';
   min-width: 1890px;
   width: 100%;
   line-height: 1;
@@ -136,6 +135,7 @@ img {
   flex-shrink: 0;
 }
 
+/* pc */
 @media screen and (min-width:768px) {
   ::-webkit-scrollbar {
     width: 5px;
@@ -209,4 +209,38 @@ img {
 .padd {
   padding-top: 84px;
   padding-bottom: 84px;
+}
+
+.FontWeight {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .padd-or {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .padd {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  body {
+    min-width: auto;
+  }
+
+  .O-title {
+    font-size: 26px;
+  }
+
+  .O-title-en {
+    font-size: 18px;
+    margin-top: 16px;
+  }
+
+  .O-txt {
+    font-size: 17px;
+
+  }
 }

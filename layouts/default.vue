@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navigation :Navlist="Navlist" />
+    <Navigation :NavList="NavList" />
     <div class="banner">
       <p class="ban-title">一站式互联网营销解决方案</p>
       <p class="ban-desc">助力企业实现内容整合营销</p>
@@ -9,14 +9,14 @@
     <section class="section">
       <Nuxt />
     </section>
-    <Footer :Navlist="Navlist" />
+    <Footer :NavList="NavList" />
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      Navlist: [
+      NavList: [
         {
           key: 0,
           value: "首页",
@@ -52,6 +52,8 @@ export default {
   },
   mounted() {
     new DevicePixelRatio().init();
+    this.$store.commit("storage/setWindow");
+    window.onresize = () => this.$store.commit("storage/setWindow");
   },
 };
 </script>
@@ -86,9 +88,21 @@ export default {
   border-radius: 100px;
   margin-top: 45px;
 }
-/* @media screen and (max-width: 768px) {
-  .section {
-    display: none;
+@media screen and (max-width: 768px) {
+  .banner {
+    height: 170px;
   }
-} */
+  .banner > .ban-title {
+    font-size: 27px;
+  }
+  .banner > .ban-desc {
+    font-size: 19px;
+    margin-top: 10px;
+  }
+  .banner > .ban-box {
+    font-size: 11px;
+    margin-top: 18px;
+    padding: 11px 20px;
+  }
+}
 </style>

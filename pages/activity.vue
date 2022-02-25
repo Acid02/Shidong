@@ -35,7 +35,7 @@
         :key="index"
       >
         <template v-for="(pic, indef) in item.picurl">
-          <img v-lazy="pic" :key="indef" />
+          <img v-lazy="pic" :key="indef" :large="pic" preview="0" />
         </template>
       </div>
     </div>
@@ -45,7 +45,12 @@
       style="background: #fff"
     >
       <p class="O-title">我们的服务</p>
-      <img src="~static/ex1.png" alt="我们的服务" style="margin-top: 0" />
+      <img
+        src="~static/ex1.png"
+        alt="我们的服务"
+        style="margin-top: 0"
+        class="mef"
+      />
     </div>
     <!-- 配套系统开发 -->
     <div class="tuig xmtzh extension-app padd-or padd flex-center">
@@ -79,13 +84,16 @@ export default {
   data() {
     return { info: {} };
   },
-  async created() {
+  async mounted() {
     let {
       data: { info },
     } = await this.$api.selPic({ data: { themeid: 1402 } });
     this.info = info.map((el) => {
       el.picurl = el.picurl.split(",");
       return el;
+    });
+    this.$nextTick(() => {
+      this.$previewRefresh();
     });
   },
 };
@@ -106,7 +114,7 @@ export default {
 }
 .xxhd .O-title {
   font-weight: bold;
-  color: #17587e;
+  color: #17587e !important;
 }
 /* 展台设计搭建 */
 .zt {
@@ -114,5 +122,18 @@ export default {
 }
 .zt .O-title-en {
   width: 76%;
+}
+@media screen and (max-width: 768px) {
+  .xxhd {
+    margin-top: 17px;
+  }
+  .xxhd .ext-webdestile,
+  .xxhd .fs-right,
+  .zt .O-title-en {
+    width: 100%;
+  }
+  .mef {
+    margin-top: 20px !important;
+  }
 }
 </style>

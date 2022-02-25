@@ -2,7 +2,7 @@
   <footer id="footer">
     <div class="ter-top">
       <ul class="bt">
-        <li v-for="(item, index) in Navlist" :key="index">
+        <li v-for="(item, index) in NavList" :key="index">
           <nuxt-link :to="item.url" class="a">{{ item.value }}</nuxt-link>
         </li>
       </ul>
@@ -11,7 +11,7 @@
         <div class="list">
           地 址：上海市普陀区铜川路68号 创邑SPACE品尊 312室<br />
           电 话：+86 021 55808923<br />
-          传 真：+86 021 558969711<br />
+          传 真：+86 021 55896971<br />
           邮 箱：fredi@sh-datastone.com
         </div>
       </div>
@@ -29,7 +29,7 @@
 <script>
 export default {
   props: {
-    Navlist: {
+    NavList: {
       type: Array,
       default: () => [],
     },
@@ -37,8 +37,6 @@ export default {
 };
 </script>
 <style>
-#footer {
-}
 .ter-top {
   background: #2b2d41;
   padding: 29px 395px;
@@ -106,5 +104,22 @@ export default {
 }
 .ter-bottom > p {
   line-height: 27px;
+}
+@media screen and (max-width: 768px) {
+  .ter-top {
+    padding: 20px;
+  }
+  .ter-top > .bt {
+    display: none;
+  }
+  .ter-top > .contact {
+    margin-top: 0;
+  }
+  .ter-bottom {
+    font-size: 12px;
+  }
+  .ter-top > .contact > .title {
+    width: 52px;
+  }
 }
 </style>

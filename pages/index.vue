@@ -1,14 +1,14 @@
 <template>
   <div>
     <!-- 公司介绍 -->
-    <div class="padd-or index-app flex-center Company">
+    <div class="padd-or index-app flex-center Company Jea">
       <div class="left">
         <p class="O-title">公司介绍</p>
         <p class="O-title-en">ABOUT US</p>
         <div class="O-txt">
           上海世栋信息科技有限公司成立于2003年，是一家专门从事信息技术整合、软件开发及应用、活动整体策划运维、整体营销推广的企业。公司的产品采用目前主流的开发技术，具有跨平台、可扩展、开放、安全、分布等特性，适应主流PC、手机端、移动端平台。经过多年的发展，世栋已经成为一家直接面向最终用户的，并且拥有自己成熟产品的互联网+企业。
         </div>
-        <div class="more">了解更多+</div>
+        <nuxt-link class="more" to="/about">了解更多+</nuxt-link>
       </div>
       <img src="~static/pexels.png" class="pexels" alt="公司介绍" />
     </div>
@@ -62,12 +62,12 @@
       >
         <div class="typi-pic flex-center">
           <div v-for="(pic, key) in item.picurl" :key="key">
-            <img v-lazy="pic" />
-            <p class="typ-txt">{{ key == 1 ? item.listlabel : "&nbsp;" }}</p>
+            <img v-lazy="pic" :large="pic" :preview="0" preview-text="" />
           </div>
+          <p class="typ-txt">{{ item.listlabel }}</p>
         </div>
       </div>
-      <div class="more">了解更多+</div>
+      <nuxt-link class="more" to="/case">了解更多+</nuxt-link>
     </div>
   </div>
 </template>
@@ -79,19 +79,28 @@ export default {
     return { info: {} };
   },
   computed: mapState("storage", ["advantage"]),
-  async created() {
+  async mounted() {
     let {
-      data: { info },
-    } = await this.$api.selPic();
+      data: { info = [] },
+    } = await this.$api.selPic({ data: { pagesize: 3 } });
+
     this.info = info.map((el) => {
       el.picurl = el.picurl.split(",");
       return el;
     });
+    this.$nextTick(() => {
+      this.$previewRefresh();
+    });
   },
   // async asyncData(context) {
-  //   const RSA_DATA = await context.app.api.selInfo();
-  //   console.log(RSA_DATA);
-  //   return RSA_DATA;
+  //   let {
+  //     data: { info },
+  //   } = await context.app.api.selPic();
+  //   info = info.map((el) => {
+  //     el.picurl = el.picurl.split(",");
+  //     return el;
+  //   });
+  //   return { info };
   // },
   methods: {},
 };

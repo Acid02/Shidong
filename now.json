@@ -1,0 +1,19 @@
+{
+    "version": 2,//版本号
+    "alias": "www.sh-datastone.com",//域名
+    "builds": [{
+      "src": "nuxt.config.js",//打包的配置文件
+      "use": "@nuxtjs/now-builder"//打包使用的包
+    }],
+    "routes": [{
+        "src": "/_nuxt/.+",//打包后你的项目地址
+        "headers": {
+          "Cache-Control": "max-age=31557600"//设置时间，则在过期之前不会重复访问
+        }
+      },
+      {
+        "src": "/(.*)",//没有特殊要求就使用该默认配置
+        "dest": "/"//没有特殊要求就使用该默认配置
+      }
+    ]
+  }

@@ -153,6 +153,7 @@
 }
 
 .typi-pic {
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -166,6 +167,8 @@
 }
 
 .typ-txt {
+  width: 100%;
+  text-align: center;
   margin-top: 33px;
   font-size: 27px;
   color: #646464;
@@ -191,4 +194,113 @@
   font-size: 34px;
   font-weight: 500;
   margin-top: 16px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .Jea {
+    flex-direction: column;
+  }
+
+  .index-app {
+    padding: 20px;
+  }
+
+  .Company>.left {
+    width: 100%;
+    border-right: 1px solid;
+    padding: 34px 20px;
+    padding-top: 20px;
+  }
+
+  .Company>.pexels {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .Company>.left>.O-txt {
+    line-height: 28px;
+    margin-top: 15px;
+  }
+
+  .business .O-title::after,
+  .business .O-title::before {
+    width: 32%;
+  }
+
+  .bus-icon {
+    margin-top: 26px;
+    font-size: 12px;
+  }
+
+  .bus-icon>.icon-item {
+    width: 26%;
+  }
+
+  .bus-icon>.icon-item>img {
+    width: 87px;
+    height: 87px;
+  }
+
+  .bus-icon>.icon-item>p {
+    margin-top: 17px;
+    font-size: 12px;
+  }
+
+  .adv-list {
+    margin-top: 27px;
+  }
+
+  .adv-item {
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 12px 18px;
+  }
+
+  .adv-item .adv-key {
+    font-size: 37px;
+    line-height: 21px;
+    margin-right: 18px;
+  }
+
+  .adv-item .adv-dsec .title {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .adv-item .adv-dsec {
+    line-height: 25px;
+    flex: 1;
+  }
+
+  .typi-list {
+    margin-top: 28px;
+  }
+
+
+  .typi-pic>div {
+    width: calc(100% / 3 - 8px);
+  }
+
+  .typ-txt {
+    margin-top: 13px;
+    font-size: 18px;
+  }
+
+  .typical .more {
+    margin-top: 29px;
+  }
+
+  .casetitle-en,
+  .casetitle {
+    font-size: 23px;
+  }
+
+  .casetitle {
+    margin-top: 6px;
+  }
+
+  .feny {
+    margin-bottom: 50px !important;
+  }
 }

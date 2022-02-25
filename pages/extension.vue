@@ -58,11 +58,11 @@
       </p>
       <div
         class="tuig-list flex-center"
-        v-for="item in extension.ys"
+        v-for="item in extension.tg"
         :key="item.id"
       >
         <template v-for="(pic, keys) in item.picurl">
-          <img v-lazy="pic" :key="keys" />
+          <img v-lazy="pic" :key="keys" :large="pic" preview="0" />
         </template>
       </div>
     </div>
@@ -93,7 +93,13 @@
         :key="item.id"
       >
         <template v-for="(pic, keys) in item.picurl">
-          <img v-lazy="pic" :key="keys" />
+          <img
+            class="ysPic"
+            v-lazy="pic"
+            :key="keys"
+            :large="pic"
+            preview="1"
+          />
         </template>
       </div>
     </div>
@@ -111,7 +117,7 @@
         :key="item.id"
       >
         <template v-for="(pic, keys) in item.picurl">
-          <img v-lazy="pic" :key="keys" />
+          <img v-lazy="pic" :key="keys" :large="pic" preview="2" />
         </template>
       </div>
     </div>
@@ -134,7 +140,7 @@ export default {
   data() {
     return { extension: { qt: [], ys: [], tg: [] } };
   },
-  async created() {
+  async mounted() {
     let {
       data: { info },
     } = await this.$api.selPic({ data: { themeid: 1401 } });
@@ -145,9 +151,13 @@ export default {
     // 数组分割
     this.extension = {
       qt: result.filter((el) => [231].includes(+el.id)), //其他配套宣传品策划、设计、制作
-      ys: result.filter((el) => [231, 230].includes(+el.id)), //印刷品策划、设计、印刷、制作、物流派送
-      tg: result.filter((el) => [228, 229].includes(+el.id)), //推广内容策划制作宣推
+      ys: result.filter((el) => [230].includes(+el.id)), //印刷品策划、设计、印刷、制作、物流派送
+      tg: result.filter((el) => [229, 228].includes(+el.id)), //推广内容策划制作宣推
     };
+    this.$nextTick(() => {
+      this.$previewRefresh();
+    });
+    console.log(this.extension);
   },
 };
 </script>
